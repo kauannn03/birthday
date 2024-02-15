@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tela de Loading</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: rgb(5, 53, 61);
+    }
+
+    .loading-container {
+        text-align: center;
+        color: #fff;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 20px;
+        background-color: #ddd;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .progress {
+        width: 0%;
+        height: 100%;
+        background-color: red;
+        border-radius: 10px;
+        transition: width 1s ease-in-out;
+    }
+</style>
+</head>
+<body>
+<div class="loading-container">
+    <h2>Carregando meu amor por você</h2>
+    <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+    </div>
+</div>
+
+<script>
+    let progress = 0;
+    const progressBar = document.getElementById('progress');
+
+    function updateProgress() {
+        if (progress <= 100) {
+            progressBar.style.width = `${progress}%`;
+            progress++;
+            if (progress <= 100) {
+                setTimeout(updateProgress, 50);
+            } else {
+                setTimeout(() => {
+                    window.location.href = 'erro.html';
+                }, 1000);
+            }
+        }
+    }
+
+    updateProgress();
+</script>
+</body>
+</html>
